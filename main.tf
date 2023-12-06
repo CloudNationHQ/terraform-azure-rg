@@ -4,6 +4,7 @@ resource "azurerm_resource_group" "groups" {
 
   name     = each.value.name
   location = each.value.region
+  tags     = try(each.value.tags, {})
 }
 
 # locks
