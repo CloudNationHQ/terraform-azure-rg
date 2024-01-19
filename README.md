@@ -49,6 +49,8 @@ A last key goal is to separate logic from configuration in the module, thereby e
 | :-- | :-- |
 | `groups` | contains all resource group configuration |
 
+## Testing
+
 ## Authors
 
 Module is maintained by [these awesome contributors](https://github.com/cloudnationhq/terraform-azure-rg/graphs/contributors).
