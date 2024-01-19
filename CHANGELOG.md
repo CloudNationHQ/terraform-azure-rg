@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.2.0...v0.3.0) (2024-01-19)
+
+
+### Features
+
+* small refactor workflows ([#5](https://github.com/CloudNationHQ/terraform-azure-rg/issues/5)) ([a39df4f](https://github.com/CloudNationHQ/terraform-azure-rg/commit/a39df4f5406dc0244b04cab72a6a655e65f1f22d))
+
 ## [0.2.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.1.0...v0.2.0) (2023-12-06)
 
 
