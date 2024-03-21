@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.4.0...v0.4.1) (2024-03-21)
+
+
+### Bug Fixes
+
+* fix expressional conditions location ([#9](https://github.com/CloudNationHQ/terraform-azure-rg/issues/9)) ([c1f6517](https://github.com/CloudNationHQ/terraform-azure-rg/commit/c1f65175ffa7b26c43a278b405cd420f4829f853))
+
 ## [0.4.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.3.0...v0.4.0) (2024-03-21)
 
 
