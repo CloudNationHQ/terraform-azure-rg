@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "groups" {
   for_each = var.groups
 
   name     = each.value.name
-  location = try(var.region, each.value.region)
+  location = var.region != null ? var.region : each.value.region
   tags     = try(var.tags, each.value.tags, {})
 }
 
