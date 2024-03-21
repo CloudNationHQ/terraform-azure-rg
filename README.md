@@ -41,7 +41,9 @@ A last key goal is to separate logic from configuration in the module, thereby e
 
 | Name | Description | Type | Required |
 | :-- | :-- | :-- | :-- |
-| `groups` | describes resource group related configuration | object | yes |
+| `groups` | describes resource groups | object | yes |
+| `region` | default azure region to be used | string | no |
+| `tags` | tags to be added to the resource | string | no |
 
 ## Outputs
 
