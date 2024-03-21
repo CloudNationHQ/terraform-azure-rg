@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.3.0...v0.4.0) (2024-03-21)
+
+
+### Features
+
+* introduced the capability to utilize some global properties ([#7](https://github.com/CloudNationHQ/terraform-azure-rg/issues/7)) ([1a79181](https://github.com/CloudNationHQ/terraform-azure-rg/commit/1a791814f20aff1733adf0504b135b87b2488fd1))
+
 ## [0.3.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.2.0...v0.3.0) (2024-01-19)
 
 
