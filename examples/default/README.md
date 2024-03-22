@@ -38,3 +38,24 @@ module "groups" {
   }
 }
 ```
+
+## Usage: existing
+
+Existing groups can also be leveraged as demonstrated below:
+
+```hcl
+module "rg" {
+  source  = "cloudnationhq/rg/azure"
+  version = "~> 0.1"
+
+  groups = {
+    demo = {
+      name               = "rg-demo-dev"
+      use_existing_group = true
+      management_lock = {
+        level = "ReadOnly"
+      }
+    }
+  }
+}
+```
