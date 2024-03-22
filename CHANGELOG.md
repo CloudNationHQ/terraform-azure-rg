@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.4.1...v0.5.0) (2024-03-22)
+
+
+### Features
+
+* add support for existing groups ([#11](https://github.com/CloudNationHQ/terraform-azure-rg/issues/11)) ([1911630](https://github.com/CloudNationHQ/terraform-azure-rg/commit/1911630cd0c155dad29d53cf62493d4c0e33df7f))
+
 ## [0.4.1](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.4.0...v0.4.1) (2024-03-21)
 
 
