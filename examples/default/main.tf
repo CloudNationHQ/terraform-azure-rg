@@ -6,18 +6,13 @@ module "naming" {
 }
 
 module "rg" {
-  #source  = "cloudnationhq/rg/azure"
-  #version = "~> 0.1"
-  source = "../../"
+  source  = "cloudnationhq/rg/azure"
+  version = "~> 0.1"
 
   groups = {
     demo = {
-      name = "rg-demo-dev-existsniot"
+      name   = module.naming.resource_group.name
       region = "westeurope"
-      #use_existing_group = true
-      management_lock = {
-        level = "ReadOnly"
-      }
     }
   }
 }
