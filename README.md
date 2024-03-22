@@ -16,6 +16,7 @@ A last key goal is to separate logic from configuration in the module, thereby e
 
 - provides support for both single and multiple resource groups, allowing flexible resource management.
 - implements optional management locks for enhanced security
+- supports leveraging existing resource groups
 
 ## Requirements
 
@@ -36,6 +37,7 @@ A last key goal is to separate logic from configuration in the module, thereby e
 | :-- | :-- |
 | [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
 | [azurerm_management_lock](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_lock) | resource |
+| [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
 ## Inputs
 
@@ -49,7 +51,8 @@ A last key goal is to separate logic from configuration in the module, thereby e
 
 | Name | Description |
 | :-- | :-- |
-| `groups` | contains all resource group configuration |
+| `groups` | contains all resource group config |
+| `groups_existing` | contains all existing resource groups |
 
 ## Testing
 
