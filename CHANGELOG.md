@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.6.0...v0.7.0) (2024-04-10)
+
+
+### Features
+
+* resource group handling now conditionally includes a global parameter for existing groups ([#15](https://github.com/CloudNationHQ/terraform-azure-rg/issues/15)) ([c8d2901](https://github.com/CloudNationHQ/terraform-azure-rg/commit/c8d29013388ead5a8cbf77e75ac8cb740166ce5e))
+
 ## [0.6.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.5.0...v0.6.0) (2024-03-22)
 
 
