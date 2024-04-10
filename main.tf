@@ -1,8 +1,8 @@
 # existing
 data "azurerm_resource_group" "existing" {
   for_each = {
-    for key, val in var.groups : key => val
-    if lookup(
+    for key, val in var.groups : key => val if var.use_existing_groups ||
+    lookup(
       val, "use_existing_group", false
     ) == true
   }
@@ -12,7 +12,7 @@ data "azurerm_resource_group" "existing" {
 
 # resourcegroups
 resource "azurerm_resource_group" "groups" {
-  for_each = {
+  for_each = var.use_existing_groups ? {} : {
     for key, val in var.groups : key => val
     if lookup(
       val, "use_existing_group", false
@@ -27,19 +27,15 @@ resource "azurerm_resource_group" "groups" {
 # locks
 resource "azurerm_management_lock" "lock" {
   for_each = {
-    for k, v in var.groups : k => v
-    if try(
-      v.management_lock != null, false
-    )
+    for k, v in var.groups : k => v if try(v.management_lock != null, false)
   }
 
   name = "lock-${each.key}"
   scope = try(
-    lookup(
-    each.value, "use_existing_group", false) == true ? data.azurerm_resource_group.existing[each.key].id :
+    (var.use_existing_groups || lookup(each.value, "use_existing_group", false)) ? data.azurerm_resource_group.existing[each.key].id :
     azurerm_resource_group.groups[each.key].id, null
   )
 
-  lock_level = try(each.value.management_lock.level, "CanNotDelete")
+  lock_level = try(each.value.management_lock.level, "cannotdelete")
   notes      = try(each.value.management_lock.notes, null)
 }
