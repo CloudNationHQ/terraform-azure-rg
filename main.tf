@@ -36,6 +36,6 @@ resource "azurerm_management_lock" "lock" {
     azurerm_resource_group.groups[each.key].id, null
   )
 
-  lock_level = try(each.value.management_lock.level, "cannotdelete")
+  lock_level = try(each.value.management_lock.level, "CanNotDelete")
   notes      = try(each.value.management_lock.notes, null)
 }
