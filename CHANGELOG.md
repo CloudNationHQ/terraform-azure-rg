@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.7.0...v0.7.1) (2024-04-17)
+
+
+### Bug Fixes
+
+* small correction output existing groups ([#17](https://github.com/CloudNationHQ/terraform-azure-rg/issues/17)) ([b6fb6cb](https://github.com/CloudNationHQ/terraform-azure-rg/commit/b6fb6cbe6338af0902aa9cbbf769438d9f77ea10))
+
 ## [0.7.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.6.0...v0.7.0) (2024-04-10)
 
 
