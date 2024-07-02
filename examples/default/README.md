@@ -6,7 +6,7 @@ This example illustrates the default setup, designed to simplify resource manage
 
 module "groups" {
   source  = "cloudnationhq/rg/azure"
-  version = "~> 0.7"
+  version = "~> 0.8"
 
   groups = {
     demo = {
