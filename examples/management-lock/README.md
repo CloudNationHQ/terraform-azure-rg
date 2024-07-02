@@ -3,7 +3,7 @@ This example outlines a resource group configuration that includes scoped manage
 ```hcl
 module "naming" {
   source  = "cloudnationhq/naming/azure"
-  version = "~> 0.7"
+  version = "~> 0.8"
 
   suffix = ["demo", "dev"]
 }

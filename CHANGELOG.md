@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.7.1...v0.8.0) (2024-07-02)
+
+
+### Features
+
+* add issue template ([#22](https://github.com/CloudNationHQ/terraform-azure-rg/issues/22)) ([c370fe2](https://github.com/CloudNationHQ/terraform-azure-rg/commit/c370fe26d2cd0c50c20aab97c08fe89706189430))
+* create pull request template ([#19](https://github.com/CloudNationHQ/terraform-azure-rg/issues/19)) ([bb14c2e](https://github.com/CloudNationHQ/terraform-azure-rg/commit/bb14c2e3d77d38c627085ef6edf8b1f146b3c7a2))
+
 ## [0.7.1](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.7.0...v0.7.1) (2024-04-17)
 
 
