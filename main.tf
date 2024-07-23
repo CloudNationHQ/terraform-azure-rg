@@ -14,9 +14,7 @@ data "azurerm_resource_group" "existing" {
 resource "azurerm_resource_group" "groups" {
   for_each = var.use_existing_groups ? {} : {
     for key, val in var.groups : key => val
-    if lookup(
-      val, "use_existing_group", false
-    ) == false
+    if try(val.use_existing_group, null) != true
   }
 
   name     = each.value.name
