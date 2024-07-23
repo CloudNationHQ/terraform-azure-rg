@@ -12,7 +12,7 @@ data "azurerm_resource_group" "existing" {
 
 # resourcegroups
 resource "azurerm_resource_group" "groups" {
-  for_each = for key, val in var.groups : key => val
+  for_each = {for key, val in var.groups : key => val
     if try(val.use_existing_group, null) != true || var.use_existing_groups 
   }
 
