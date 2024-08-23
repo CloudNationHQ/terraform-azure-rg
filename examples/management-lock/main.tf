@@ -11,8 +11,8 @@ module "rg" {
 
   groups = {
     demo = {
-      name   = module.naming.resource_group.name
-      region = "westeurope"
+      name     = module.naming.resource_group.name
+      location = "westeurope"
 
       management_lock = {
         level = "ReadOnly"
