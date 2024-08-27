@@ -3,13 +3,21 @@
 ## [1.0.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.9.0...v1.0.0) (2024-08-27)
 
 
-### ⚠ BREAKING CHANGES
+#### ⚠ BREAKING CHANGES
 
-* merge output for newly created and existing groups ([#25](https://github.com/CloudNationHQ/terraform-azure-rg/issues/25))
+* aligned properties
 
 ### Features
 
 * merge output for newly created and existing groups ([#25](https://github.com/CloudNationHQ/terraform-azure-rg/issues/25)) ([4b488f5](https://github.com/CloudNationHQ/terraform-azure-rg/commit/4b488f5c723d532803b2c148da1dfeb40d927acb))
+
+### Upgrade from v0.9.0 to v1.0
+
+- Update module reference to: `version = "~> 1.0"`
+- Rename variable:
+   * region -> location
+- Rename output variable:
+   * groups_existing -> groups
 
 ## [0.9.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.8.0...v0.9.0) (2024-07-04)
 
