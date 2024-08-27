@@ -45,7 +45,7 @@ A last key goal is to separate logic from configuration in the module, thereby e
 | :-- | :-- | :-- | :-- |
 | `groups` | describes resource groups | object | yes |
 | `use_existing_groups` | use existing resource groups globally | bool | no |
-| `region` | default azure region to be used | string | no |
+| `location` | default azure region to be used | string | no |
 | `tags` | tags to be added to the resource | string | no |
 
 ## Outputs
@@ -53,7 +53,6 @@ A last key goal is to separate logic from configuration in the module, thereby e
 | Name | Description |
 | :-- | :-- |
 | `groups` | contains all resource group config |
-| `groups_existing` | contains all resource groups considered existing based on global and local flags. |
 
 ## Testing
 
