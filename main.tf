@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "groups" {
   }
 
   name     = each.value.name
-  location = var.region != null ? var.region : each.value.region
+  location = var.location != null ? var.location : each.value.location
   tags     = try(var.tags, each.value.tags, {})
 }
 

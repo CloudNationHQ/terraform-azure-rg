@@ -11,7 +11,7 @@ module "groups" {
   groups = {
     demo = {
       name   = module.naming.resource_group.name
-      region = "westeurope"
+      location = "westeurope"
     }
   }
 }
@@ -29,11 +29,11 @@ module "groups" {
   groups = {
     rg1 = {
       name   = "rg-demo-dev-001"
-      region = "westeurope"
+      location = "westeurope"
     }
     rg2 = {
       name   = "rg-demo-dev-002"
-      region = "eastus2"
+      location = "eastus2"
     }
   }
 }

@@ -10,8 +10,8 @@ variable "use_existing_groups" {
   default     = false
 }
 
-variable "region" {
-  description = "default azure region to be used."
+variable "location" {
+  description = "default azure location to be used."
   type        = string
   default     = null
 }
