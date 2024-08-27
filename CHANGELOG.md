@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.8.0...v0.9.0) (2024-07-04)
+
+
+### Features
+
+* update contribution docs ([#23](https://github.com/CloudNationHQ/terraform-azure-rg/issues/23)) ([7b61ef7](https://github.com/CloudNationHQ/terraform-azure-rg/commit/7b61ef758147f84e3778162b8644767c794e8b7b))
+
 ## [0.8.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v0.7.1...v0.8.0) (2024-07-02)
 
 
