@@ -1,61 +1,16 @@
-This example illustrates the default setup, designed to simplify resource management and deployment.
+# Default
 
-## Usage: default
+This example illustrates the default setup, in its simplest form.
 
-```hcl
-
-module "groups" {
-  source  = "cloudnationhq/rg/azure"
-  version = "~> 0.9"
-
-  groups = {
-    demo = {
-      name   = module.naming.resource_group.name
-      location = "westeurope"
-    }
-  }
-}
-```
-
-## Usage: multiple
-
-The example below demonstrates how to create several resource groups.
+## Types
 
 ```hcl
-module "groups" {
-  source  = "cloudnationhq/rg/azure"
-  version = "~> 0.1"
-
-  groups = {
-    rg1 = {
-      name   = "rg-demo-dev-001"
-      location = "westeurope"
-    }
-    rg2 = {
-      name   = "rg-demo-dev-002"
-      location = "eastus2"
-    }
-  }
-}
+groups = map(object({
+  name     = string
+  location = string
+}))
 ```
 
-## Usage: existing
+## Notes
 
-Existing groups can also be leveraged as demonstrated below:
-
-```hcl
-module "rg" {
-  source  = "cloudnationhq/rg/azure"
-  version = "~> 0.1"
-
-  groups = {
-    demo = {
-      name               = "rg-demo-dev"
-      use_existing_group = true
-      management_lock = {
-        level = "ReadOnly"
-      }
-    }
-  }
-}
-```
+You can use existing groups by setting use_existing_group at both global and resource levels.

@@ -1,26 +1,15 @@
-This example outlines a resource group configuration that includes scoped management locks, improving security by enforcing strict access controls.
+# Management Lock
+
+This applies a management lock to the resource group.
+
+## Types
 
 ```hcl
-module "naming" {
-  source  = "cloudnationhq/naming/azure"
-  version = "~> 0.9"
-
-  suffix = ["demo", "dev"]
-}
-
-module "rg" {
-  source  = "cloudnationhq/rg/azure"
-  version = "~> 0.1"
-
-  groups = {
-    demo = {
-      name   = module.naming.resource_group.name
-      location = "westeurope"
-
-      management_lock = {
-        level = "ReadOnly"
-      }
-    }
-  }
-}
+groups = map(object({
+  name     = string
+  location = string
+  management_lock = optional(object({
+    level = string
+  }))
+}))
 ```
