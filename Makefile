@@ -1,7 +1,7 @@
-.PHONY: test test_extended
+.PHONY: test
 
-export TF_PATH
+export EXAMPLE
 
 test:
-	cd tests && go test -v -timeout 60m -run TestApplyNoError/$(TF_PATH) ./rg_test.go
+	cd tests && go test -v -timeout 60m -run TestApplyNoError/$(EXAMPLE) ./rg_test.go
 
