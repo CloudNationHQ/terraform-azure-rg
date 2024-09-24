@@ -9,7 +9,7 @@
 
 ### Features
 
-* upgrade azurerm provder to v4 ([#32](https://github.com/CloudNationHQ/terraform-azure-rg/issues/32)) ([ae4bedc](https://github.com/CloudNationHQ/terraform-azure-rg/commit/ae4bedce18c0da8bb97f4345ce1a156280e33f48))
+* upgrade azurerm provider to v4 ([#32](https://github.com/CloudNationHQ/terraform-azure-rg/issues/32)) ([ae4bedc](https://github.com/CloudNationHQ/terraform-azure-rg/commit/ae4bedce18c0da8bb97f4345ce1a156280e33f48))
 
 ### Upgrade from v1.1.0 to v2.0.0:
 
