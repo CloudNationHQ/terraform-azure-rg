@@ -93,3 +93,6 @@ Module is maintained by [these awesome contributors](https://github.com/cloudnat
 MIT Licensed. See [LICENSE](./LICENSE) for full details.
 
 ## References
+
+- [Documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal)
+- [Rest Api](https://learn.microsoft.com/en-us/rest/api/resources/resource-groups)
