@@ -92,4 +92,4 @@ Module is maintained by [these awesome contributors](https://github.com/cloudnat
 
 MIT Licensed. See [LICENSE](./LICENSE) for full details.
 
-## Reference
+## References
