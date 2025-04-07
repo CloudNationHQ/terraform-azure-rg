@@ -19,9 +19,10 @@ resource "azurerm_resource_group" "groups" {
     ) == false
   }
 
-  name     = each.value.name
-  location = var.location != null ? var.location : each.value.location
-  tags     = try(var.tags, each.value.tags, {})
+  name       = each.value.name
+  location   = var.location != null ? var.location : each.value.location
+  managed_by = try(each.value.managed_by, null)
+  tags       = try(var.tags, each.value.tags, {})
 }
 
 # locks
