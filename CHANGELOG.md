@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v2.4.0...v2.5.0) (2025-04-11)
+
+
+### Features
+
+* add type definitions ([#50](https://github.com/CloudNationHQ/terraform-azure-rg/issues/50)) ([b5a0a08](https://github.com/CloudNationHQ/terraform-azure-rg/commit/b5a0a08f5ba6ea9ca8d01e132d2b6c8a960c9f08))
+
 ## [2.4.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v2.3.0...v2.4.0) (2025-04-07)
 
 
