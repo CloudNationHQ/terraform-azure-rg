@@ -1,49 +1,100 @@
 # Resource Groups
 
-This terraform module enables the efficient creation and management of azure resource groups. By offering customizable options for the name, location, management locks and tags, it brings granular control over your azure environment. Resource groups, functioning as logical containers, are essential for managing workloads and deploying accelerators.
+This terraform module enables the efficient creation and management of azure resource groups. By offering customizable options for the name, location, management locks and tags, it brings granular control over your azure environment.
 
 ## Features
 
-- provides support for both single and multiple resource groups, allowing flexible resource management.
-- implements optional management locks for enhanced security
-- supports leveraging existing resource groups
+Provides support for both single and multiple resource groups, allowing flexible resource management.
+
+Implements optional management locks for enhanced security
+
+Supports leveraging existing resource groups
+
+Utilization of terratest for robust validation.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.0 |
+The following requirements are needed by this module:
+
+- <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (~> 1.0)
+
+- <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) (~> 4.0)
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.0 |
+The following providers are used by this module:
+
+- <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) (~> 4.0)
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [azurerm_management_lock.lock](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_lock) | resource |
-| [azurerm_resource_group.groups](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
-| [azurerm_resource_group.existing](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
+The following resources are used by this module:
 
-## Inputs
+- [azurerm_management_lock.lock](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_lock) (resource)
+- [azurerm_resource_group.groups](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) (resource)
+- [azurerm_resource_group.existing](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) (data source)
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_groups"></a> [groups](#input\_groups) | describes resource groups | `any` | `{}` | no |
-| <a name="input_location"></a> [location](#input\_location) | default azure location to be used. | `string` | `null` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | tags to be added to the resources | `map(string)` | `{}` | no |
-| <a name="input_use_existing_groups"></a> [use\_existing\_groups](#input\_use\_existing\_groups) | use existing resource groups globally | `bool` | `false` | no |
+## Required Inputs
+
+The following input variables are required:
+
+### <a name="input_groups"></a> [groups](#input\_groups)
+
+Description: Contains all resource group configuration
+
+Type:
+
+```hcl
+map(object({
+    name               = string
+    location           = optional(string)
+    managed_by         = optional(string, null)
+    tags               = optional(map(string), {})
+    use_existing_group = optional(bool, false)
+    management_lock = optional(object({
+      name  = optional(string)
+      level = optional(string, "CanNotDelete")
+      notes = optional(string, null)
+    }), null)
+  }))
+```
+
+## Optional Inputs
+
+The following input variables are optional (have default values):
+
+### <a name="input_location"></a> [location](#input\_location)
+
+Description: default azure location to be used.
+
+Type: `string`
+
+Default: `null`
+
+### <a name="input_tags"></a> [tags](#input\_tags)
+
+Description: tags to be added to the resources
+
+Type: `map(string)`
+
+Default: `{}`
+
+### <a name="input_use_existing_groups"></a> [use\_existing\_groups](#input\_use\_existing\_groups)
+
+Description: use existing resource groups globally
+
+Type: `bool`
+
+Default: `false`
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_groups"></a> [groups](#output\_groups) | Contains all resource groups, existing and new. |
+The following outputs are exported:
+
+### <a name="output_groups"></a> [groups](#output\_groups)
+
+Description: Contains all resource groups, existing and new.
 <!-- END_TF_DOCS -->
 
 ## Goals
