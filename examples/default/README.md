@@ -1,15 +1,4 @@
-# Default
-
 This example illustrates the default setup, in its simplest form.
-
-## Types
-
-```hcl
-groups = map(object({
-  name     = string
-  location = string
-}))
-```
 
 ## Notes
 
