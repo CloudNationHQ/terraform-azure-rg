@@ -23,8 +23,8 @@ resource "azurerm_resource_group" "groups" {
   location   = var.location != null ? var.location : each.value.location
   managed_by = each.value.managed_by
 
-  tags = try(
-    var.tags, each.value.tags, {}
+  tags = coalesce(
+    each.value.tags, var.tags
   )
 }
 
