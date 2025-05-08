@@ -50,7 +50,7 @@ map(object({
     name               = string
     location           = optional(string)
     managed_by         = optional(string, null)
-    tags               = optional(map(string), {})
+    tags               = optional(map(string))
     use_existing_group = optional(bool, false)
     management_lock = optional(object({
       name  = optional(string)
