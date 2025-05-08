@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v2.5.1...v2.6.0) (2025-05-08)
+
+
+### Features
+
+* replace deployment test code with module consumption and fix tags property idempotence ([#55](https://github.com/CloudNationHQ/terraform-azure-rg/issues/55)) ([d24e591](https://github.com/CloudNationHQ/terraform-azure-rg/commit/d24e59195d86992f5211cd9ee359bb6a1aa43f16))
+
 ## [2.5.1](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v2.5.0...v2.5.1) (2025-04-14)
 
 
