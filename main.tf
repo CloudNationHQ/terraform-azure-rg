@@ -19,7 +19,13 @@ resource "azurerm_resource_group" "groups" {
     ) == false
   }
 
-  name       = each.value.name
+  name = coalesce(
+    each.value.name,
+    try(
+      join("-", [var.naming.resource_group, each.key]), null
+    ), each.key
+  )
+
   location   = var.location != null ? var.location : each.value.location
   managed_by = each.value.managed_by
 
@@ -35,7 +41,9 @@ resource "azurerm_management_lock" "lock" {
   }
 
   name = coalesce(
-    each.value.management_lock.name, "lock-${each.key}"
+    each.value.management_lock.name,
+    try("lock-${each.key}", null
+    ), each.key
   )
 
   scope = try(
