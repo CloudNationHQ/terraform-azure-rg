@@ -1,7 +1,7 @@
 variable "groups" {
   description = "Contains all resource group configuration"
   type = map(object({
-    name               = string
+    name               = optional(string)
     location           = optional(string)
     managed_by         = optional(string, null)
     tags               = optional(map(string))
@@ -28,6 +28,12 @@ variable "location" {
 
 variable "tags" {
   description = "tags to be added to the resources"
+  type        = map(string)
+  default     = {}
+}
+
+variable "naming" {
+  description = "contains naming convention"
   type        = map(string)
   default     = {}
 }
