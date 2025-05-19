@@ -12,6 +12,8 @@ Supports leveraging existing resource groups
 
 Utilization of terratest for robust validation.
 
+Offers three-tier naming hierarchy (explicit, convention-based, or key-based) for flexible resource management.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -47,7 +49,7 @@ Type:
 
 ```hcl
 map(object({
-    name               = string
+    name               = optional(string)
     location           = optional(string)
     managed_by         = optional(string, null)
     tags               = optional(map(string))
@@ -71,6 +73,14 @@ Description: default azure location to be used.
 Type: `string`
 
 Default: `null`
+
+### <a name="input_naming"></a> [naming](#input\_naming)
+
+Description: contains naming convention
+
+Type: `map(string)`
+
+Default: `{}`
 
 ### <a name="input_tags"></a> [tags](#input\_tags)
 
