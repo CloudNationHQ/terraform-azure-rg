@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.8.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v2.7.0...v2.8.0) (2026-05-04)
+
+
+### Features
+
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#69](https://github.com/CloudNationHQ/terraform-azure-rg/issues/69)) ([11e2a96](https://github.com/CloudNationHQ/terraform-azure-rg/commit/11e2a9667487d43f5fcbd30f6d1f7f59b8c7ae01))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#71](https://github.com/CloudNationHQ/terraform-azure-rg/issues/71)) ([f257e8a](https://github.com/CloudNationHQ/terraform-azure-rg/commit/f257e8ac322dc844d3ef32ec6ae653c6148cf41a))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#72](https://github.com/CloudNationHQ/terraform-azure-rg/issues/72)) ([52135fd](https://github.com/CloudNationHQ/terraform-azure-rg/commit/52135fd00bcda540292fa2922cb78496277301e4))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#73](https://github.com/CloudNationHQ/terraform-azure-rg/issues/73)) ([672a09f](https://github.com/CloudNationHQ/terraform-azure-rg/commit/672a09fc2709a8cdd2350917f3ee71e09e5d1d63))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#74](https://github.com/CloudNationHQ/terraform-azure-rg/issues/74)) ([52045bd](https://github.com/CloudNationHQ/terraform-azure-rg/commit/52045bda0c76c790540a2b298096a5875f289fea))
+* **deps:** bump github.com/ulikunitz/xz from 0.5.10 to 0.5.14 in /tests ([#62](https://github.com/CloudNationHQ/terraform-azure-rg/issues/62)) ([45c0828](https://github.com/CloudNationHQ/terraform-azure-rg/commit/45c0828331560b5987c760ca22509fce2d9e5281))
+* **deps:** bump golang.org/x/crypto from 0.36.0 to 0.45.0 in /tests ([#67](https://github.com/CloudNationHQ/terraform-azure-rg/issues/67)) ([73b7478](https://github.com/CloudNationHQ/terraform-azure-rg/commit/73b7478300003a987acd7e21ad57360a34db4500))
+
 ## [2.7.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v2.6.0...v2.7.0) (2025-05-19)
 
 
