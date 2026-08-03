@@ -12,20 +12,6 @@ variable "groups" {
       notes = optional(string)
     }))
   }))
-
-  validation {
-    condition = alltrue([
-      for k, v in var.groups : v.location != null || var.location != null
-    ])
-    error_message = "location must be set on each group or via the module-level var.location."
-  }
-
-  validation {
-    condition = alltrue([
-      for k, v in var.groups : v.management_lock == null || contains(["CanNotDelete", "ReadOnly"], v.management_lock.level)
-    ])
-    error_message = "management_lock.level must be one of: CanNotDelete, ReadOnly."
-  }
 }
 
 variable "use_existing_groups" {
