@@ -1,7 +1,3 @@
-locals {
-  all_groups = merge(azurerm_resource_group.this, data.azurerm_resource_group.existing)
-}
-
 # existing
 data "azurerm_resource_group" "existing" {
   for_each = {
@@ -30,8 +26,12 @@ resource "azurerm_management_lock" "lock" {
     for k, v in var.groups : k => v if v.management_lock != null
   }
 
-  name  = coalesce(each.value.management_lock.name, "lock-${each.key}")
-  scope = local.all_groups[each.key].id
+  name = coalesce(each.value.management_lock.name, "lock-${each.key}")
+
+  scope = try(
+    (var.use_existing_groups || each.value.use_existing_group == true) ? data.azurerm_resource_group.existing[each.key].id :
+    azurerm_resource_group.this[each.key].id, null
+  )
 
   lock_level = each.value.management_lock.level
   notes      = each.value.management_lock.notes
