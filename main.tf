@@ -1,55 +1,37 @@
+locals {
+  all_groups = merge(azurerm_resource_group.this, data.azurerm_resource_group.existing)
+}
+
 # existing
 data "azurerm_resource_group" "existing" {
   for_each = {
-    for key, val in var.groups : key => val if var.use_existing_groups ||
-    lookup(
-      val, "use_existing_group", false
-    ) == true
+    for key, val in var.groups : key => val if var.use_existing_groups || val.use_existing_group == true
   }
 
   name = each.value.name
 }
 
-# resourcegroups
-resource "azurerm_resource_group" "groups" {
+# resource groups
+resource "azurerm_resource_group" "this" {
   for_each = var.use_existing_groups ? {} : {
-    for key, val in var.groups : key => val
-    if lookup(
-      val, "use_existing_group", false
-    ) == false
+    for key, val in var.groups : key => val if val.use_existing_group != true
   }
 
-  name = coalesce(
-    each.value.name,
-    try(
-      join("-", [var.naming.resource_group, each.key]), null
-    ), each.key
-  )
-
-  location   = var.location != null ? var.location : each.value.location
+  name       = coalesce(each.value.name, each.key)
+  location   = coalesce(each.value.location, var.location)
   managed_by = each.value.managed_by
 
-  tags = coalesce(
-    each.value.tags, var.tags
-  )
+  tags = coalesce(each.value.tags, var.tags)
 }
 
 # locks
 resource "azurerm_management_lock" "lock" {
   for_each = {
-    for k, v in var.groups : k => v if try(v.management_lock != null, false)
+    for k, v in var.groups : k => v if v.management_lock != null
   }
 
-  name = coalesce(
-    each.value.management_lock.name,
-    try("lock-${each.key}", null
-    ), each.key
-  )
-
-  scope = try(
-    (var.use_existing_groups || lookup(each.value, "use_existing_group", false)) ? data.azurerm_resource_group.existing[each.key].id :
-    azurerm_resource_group.groups[each.key].id, null
-  )
+  name  = coalesce(each.value.management_lock.name, "lock-${each.key}")
+  scope = local.all_groups[each.key].id
 
   lock_level = each.value.management_lock.level
   notes      = each.value.management_lock.notes

@@ -7,9 +7,11 @@ module "naming" {
 
 module "rg" {
   source  = "cloudnationhq/rg/azure"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
-  naming = local.naming
+  use_existing_groups = false
+  location            = null
+  tags                = { environment = "demo" }
 
   groups = {
     demo = {
