@@ -62,11 +62,17 @@ map(object({
   }))
 ```
 
+## Optional Inputs
+
+The following input variables are optional (have default values):
+
 ### <a name="input_location"></a> [location](#input\_location)
 
 Description: default azure location to be used.
 
 Type: `string`
+
+Default: `null`
 
 ### <a name="input_tags"></a> [tags](#input\_tags)
 
@@ -74,15 +80,15 @@ Description: tags to be added to the resources
 
 Type: `map(string)`
 
+Default: `{}`
+
 ### <a name="input_use_existing_groups"></a> [use\_existing\_groups](#input\_use\_existing\_groups)
 
 Description: use existing resource groups globally
 
 Type: `bool`
 
-## Optional Inputs
-
-No optional inputs.
+Default: `false`
 
 ## Outputs
 
