@@ -13,11 +13,19 @@ resource "azurerm_resource_group" "this" {
     for key, val in var.groups : key => val if val.use_existing_group != true
   }
 
-  name       = coalesce(each.value.name, each.key)
-  location   = coalesce(each.value.location, var.location)
+  name = coalesce(
+    each.value.name, each.key
+  )
+
+  location = coalesce(
+    each.value.location, var.location
+  )
+
   managed_by = each.value.managed_by
 
-  tags = coalesce(each.value.tags, var.tags)
+  tags = coalesce(
+    each.value.tags, var.tags
+  )
 }
 
 # locks
@@ -26,7 +34,9 @@ resource "azurerm_management_lock" "lock" {
     for k, v in var.groups : k => v if v.management_lock != null
   }
 
-  name = coalesce(each.value.management_lock.name, "lock-${each.key}")
+  name = coalesce(
+    each.value.management_lock.name, "lock-${each.key}"
+  )
 
   scope = try(
     (var.use_existing_groups || each.value.use_existing_group == true) ? data.azurerm_resource_group.existing[each.key].id :
