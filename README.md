@@ -12,7 +12,7 @@ Supports leveraging existing resource groups
 
 Utilization of terratest for robust validation.
 
-Offers three-tier naming hierarchy (explicit, convention-based, or key-based) for flexible resource management.
+Falls back to the map key as the resource group name when no explicit name is given.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -21,20 +21,20 @@ The following requirements are needed by this module:
 
 - <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (~> 1.0)
 
-- <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) (~> 4.0)
+- <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) (~> 5.0)
 
 ## Providers
 
 The following providers are used by this module:
 
-- <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) (~> 4.0)
+- <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) (~> 5.0)
 
 ## Resources
 
 The following resources are used by this module:
 
 - [azurerm_management_lock.lock](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/management_lock) (resource)
-- [azurerm_resource_group.groups](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) (resource)
+- [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) (resource)
 - [azurerm_resource_group.existing](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) (data source)
 
 ## Required Inputs
@@ -51,14 +51,14 @@ Type:
 map(object({
     name               = optional(string)
     location           = optional(string)
-    managed_by         = optional(string, null)
+    managed_by         = optional(string)
     tags               = optional(map(string))
-    use_existing_group = optional(bool, false)
+    use_existing_group = optional(bool)
     management_lock = optional(object({
       name  = optional(string)
-      level = optional(string, "CanNotDelete")
-      notes = optional(string, null)
-    }), null)
+      level = string
+      notes = optional(string)
+    }))
   }))
 ```
 
@@ -73,14 +73,6 @@ Description: default azure location to be used.
 Type: `string`
 
 Default: `null`
-
-### <a name="input_naming"></a> [naming](#input\_naming)
-
-Description: contains naming convention
-
-Type: `map(string)`
-
-Default: `{}`
 
 ### <a name="input_tags"></a> [tags](#input\_tags)
 

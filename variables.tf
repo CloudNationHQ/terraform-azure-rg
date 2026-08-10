@@ -3,14 +3,14 @@ variable "groups" {
   type = map(object({
     name               = optional(string)
     location           = optional(string)
-    managed_by         = optional(string, null)
+    managed_by         = optional(string)
     tags               = optional(map(string))
-    use_existing_group = optional(bool, false)
+    use_existing_group = optional(bool)
     management_lock = optional(object({
       name  = optional(string)
-      level = optional(string, "CanNotDelete")
-      notes = optional(string, null)
-    }), null)
+      level = string
+      notes = optional(string)
+    }))
   }))
 }
 
@@ -28,12 +28,6 @@ variable "location" {
 
 variable "tags" {
   description = "tags to be added to the resources"
-  type        = map(string)
-  default     = {}
-}
-
-variable "naming" {
-  description = "contains naming convention"
   type        = map(string)
   default     = {}
 }

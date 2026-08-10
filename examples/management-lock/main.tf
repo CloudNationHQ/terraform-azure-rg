@@ -7,9 +7,7 @@ module "naming" {
 
 module "rg" {
   source  = "cloudnationhq/rg/azure"
-  version = "~> 2.0"
-
-  naming = local.naming
+  version = "~> 3.0"
 
   groups = {
     demo = {
