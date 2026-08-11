@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v3.0.0...v3.1.0) (2026-08-11)
+
+
+### Features
+
+* resource naming to this ([#78](https://github.com/CloudNationHQ/terraform-azure-rg/issues/78)) ([506d84e](https://github.com/CloudNationHQ/terraform-azure-rg/commit/506d84ebca5a9fdb36a77c991159cfd051623f3b))
+
 ## [3.0.0](https://github.com/CloudNationHQ/terraform-azure-rg/compare/v2.7.0...v3.0.0) (2026-08-10)
 
 
