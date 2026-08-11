@@ -1,5 +1,5 @@
 # existing
-data "azurerm_resource_group" "existing" {
+data "azurerm_resource_group" "this" {
   for_each = {
     for key, val in var.groups : key => val if var.use_existing_groups || val.use_existing_group == true
   }
@@ -29,7 +29,7 @@ resource "azurerm_resource_group" "this" {
 }
 
 # locks
-resource "azurerm_management_lock" "lock" {
+resource "azurerm_management_lock" "this" {
   for_each = {
     for k, v in var.groups : k => v if v.management_lock != null
   }
@@ -39,7 +39,7 @@ resource "azurerm_management_lock" "lock" {
   )
 
   scope = try(
-    (var.use_existing_groups || each.value.use_existing_group == true) ? data.azurerm_resource_group.existing[each.key].id :
+    (var.use_existing_groups || each.value.use_existing_group == true) ? data.azurerm_resource_group.this[each.key].id :
     azurerm_resource_group.this[each.key].id, null
   )
 

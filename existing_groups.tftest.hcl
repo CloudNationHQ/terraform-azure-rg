@@ -29,11 +29,11 @@ run "all_groups_are_created" {
   }
 
   assert {
-    condition = length(data.azurerm_resource_group.existing) == 0
+    condition = length(data.azurerm_resource_group.this) == 0
     error_message = format(
       "no group opts into existing, so the data source must plan 0 instances, got %d: %s",
-      length(data.azurerm_resource_group.existing),
-      jsonencode(sort(keys(data.azurerm_resource_group.existing))),
+      length(data.azurerm_resource_group.this),
+      jsonencode(sort(keys(data.azurerm_resource_group.this))),
     )
   }
 
@@ -82,26 +82,26 @@ run "global_flag_makes_every_group_existing" {
   }
 
   assert {
-    condition = toset(keys(data.azurerm_resource_group.existing)) == toset(["alpha", "beta"])
+    condition = toset(keys(data.azurerm_resource_group.this)) == toset(["alpha", "beta"])
     error_message = format(
       "use_existing_groups = true must look up every group including ones with use_existing_group = false, expected [alpha, beta], got %s",
-      jsonencode(sort(keys(data.azurerm_resource_group.existing))),
+      jsonencode(sort(keys(data.azurerm_resource_group.this))),
     )
   }
 
   assert {
-    condition = data.azurerm_resource_group.existing["beta"].name == "rg-beta"
+    condition = data.azurerm_resource_group.this["beta"].name == "rg-beta"
     error_message = format(
       "existing group must be looked up by its own name (\"rg-beta\"), got %q",
-      data.azurerm_resource_group.existing["beta"].name,
+      data.azurerm_resource_group.this["beta"].name,
     )
   }
 
   assert {
-    condition = azurerm_management_lock.lock["alpha"].scope == data.azurerm_resource_group.existing["alpha"].id
+    condition = azurerm_management_lock.this["alpha"].scope == data.azurerm_resource_group.this["alpha"].id
     error_message = format(
       "lock on an existing group must scope to the data source id, got %q",
-      azurerm_management_lock.lock["alpha"].scope,
+      azurerm_management_lock.this["alpha"].scope,
     )
   }
 
@@ -116,7 +116,7 @@ run "global_flag_makes_every_group_existing" {
   assert {
     condition = alltrue([
       for k, g in output.groups :
-      g.id == data.azurerm_resource_group.existing[k].id
+      g.id == data.azurerm_resource_group.this[k].id
     ])
     error_message = format(
       "every output group must carry the existing id, got %s",
@@ -148,10 +148,10 @@ run "per_group_flag_splits_existing_and_created" {
   }
 
   assert {
-    condition = toset(keys(data.azurerm_resource_group.existing)) == toset(["existing_one"])
+    condition = toset(keys(data.azurerm_resource_group.this)) == toset(["existing_one"])
     error_message = format(
       "only the group with use_existing_group = true must be looked up, expected [existing_one], got %s",
-      jsonencode(sort(keys(data.azurerm_resource_group.existing))),
+      jsonencode(sort(keys(data.azurerm_resource_group.this))),
     )
   }
 
@@ -164,26 +164,26 @@ run "per_group_flag_splits_existing_and_created" {
   }
 
   assert {
-    condition = length(setintersection(keys(data.azurerm_resource_group.existing), keys(azurerm_resource_group.this))) == 0
+    condition = length(setintersection(keys(data.azurerm_resource_group.this), keys(azurerm_resource_group.this))) == 0
     error_message = format(
       "a group must never be both looked up and created, overlap: %s",
-      jsonencode(sort(tolist(setintersection(keys(data.azurerm_resource_group.existing), keys(azurerm_resource_group.this))))),
+      jsonencode(sort(tolist(setintersection(keys(data.azurerm_resource_group.this), keys(azurerm_resource_group.this))))),
     )
   }
 
   assert {
-    condition = azurerm_management_lock.lock["existing_one"].scope == data.azurerm_resource_group.existing["existing_one"].id
+    condition = azurerm_management_lock.this["existing_one"].scope == data.azurerm_resource_group.this["existing_one"].id
     error_message = format(
       "lock on the existing group must scope to the data source id, got %q",
-      azurerm_management_lock.lock["existing_one"].scope,
+      azurerm_management_lock.this["existing_one"].scope,
     )
   }
 
   assert {
-    condition = toset(keys(azurerm_management_lock.lock)) == toset(["created_one", "existing_one"])
+    condition = toset(keys(azurerm_management_lock.this)) == toset(["created_one", "existing_one"])
     error_message = format(
       "a lock must be planned for every group with management_lock regardless of branch, expected [created_one, existing_one], got %s",
-      jsonencode(sort(keys(azurerm_management_lock.lock))),
+      jsonencode(sort(keys(azurerm_management_lock.this))),
     )
   }
 
@@ -196,7 +196,7 @@ run "per_group_flag_splits_existing_and_created" {
   }
 
   assert {
-    condition = output.groups["existing_one"].id == data.azurerm_resource_group.existing["existing_one"].id
+    condition = output.groups["existing_one"].id == data.azurerm_resource_group.this["existing_one"].id
     error_message = format(
       "output entry for the existing group must come from the data source, got %q",
       output.groups["existing_one"].id,
